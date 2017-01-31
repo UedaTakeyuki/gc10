@@ -84,7 +84,7 @@ if (isset($_GET["selected_device"]) && !is_null($_GET["selected_device"])){
 		<div data-role="fieldcontain">
 			<label for="selected_device">
 
-<?php if(is_null($video_devices)) :?>
+<?php if(count($video_devices) == 0) :?>
 				カメラがありません
 <?php else :?>
 				カメラを選択してください
