@@ -1,0 +1,24 @@
+{
+  "name": "gc13",
+  "version": "0.0.0",
+  "description": "mult uvc webcam angle check on RPi.",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UedaTakeyuki/gc13.git"
+  },
+  "author": "Ueda Takeyuki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UedaTakeyuki/gc13/issues"
+  },
+  "devDependencies": {
+    "jquery": "^1.9.1"
+  },
+  "dependencies": {
+    "jquery-mobile": "^1.4.1"
+  }
+}
