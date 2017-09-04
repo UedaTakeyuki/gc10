@@ -47,16 +47,16 @@ function us_error_log(){
     <meta charset="UTF-8">
 	<title><?= $title ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="node_modules/jquery-mobile/dist/jquery.mobile.min.css" />
-	<script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/jquery-mobile/dist/jquery.mobile.min.js"></script>
+	<link rel="stylesheet" href="jquery.mobile-1.3.2.min.css" />
+	<script src="jquery-1.11.3.min.js"></script>
+	<script src="jquery.mobile-1.3.2.min.js"></script>
 </head>
 
 <?php } ?>
 
 <?php function show_html_jquery_footer() { ?>
 
-<div data-role="footer" data-position="fixed" data-theme="b" class="no-cache">
+<div data-role="footer" data-position="fixed"  class="no-cache">
     <h4><?php echo COPYRIGHT ?></h4>
 </div>
 

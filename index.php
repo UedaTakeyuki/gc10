@@ -71,7 +71,7 @@ if (isset($_GET["selected_device"]) && !is_null($_GET["selected_device"])){
 
 <div data-role="page" id="new"> 
 	  
-<div data-role="header" data-theme="b"　data-position="fixed">
+<div data-role="header" data-position="fixed">
     <h1><?= TITLE ?></h1>
 </div>
 
