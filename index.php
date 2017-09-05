@@ -56,7 +56,11 @@ if (isset($_GET["selected_device"]) && !is_null($_GET["selected_device"])){
 
 <SCRIPT language="JavaScript">
 	function selecter_select(){
-      $('#selected_device').val("<?= $selected_device ?>");
+			if ("<?= $selected_device ?>" != ""){
+	    $('#selected_device').val("<?= $selected_device ?>");
+	  }else{
+	    $('#selected_device').val("<?= $video_devices[0] ?>");	  	
+	  }
       //jquery mobile用の処理
       $('select').selectmenu('refresh',true);
   }
@@ -93,7 +97,6 @@ if (isset($_GET["selected_device"]) && !is_null($_GET["selected_device"])){
 			</label>
 
 			<select name="selected_device" id="selected_device" data-native-menu="true">
-
 <?php foreach ($video_devices as $key => $value): ?>
 				<option value="<?= $value ?>"><?= $value ?></option>
 <?php endforeach ?>
