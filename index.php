@@ -8,7 +8,7 @@ error_log("us_log:"."script_entry ".__FILE__." updated at ".date( "Y/m/d H:i", g
 //===============================================================
 // 定数
 //===============================================================
-define("TITLE","カメラ確認");
+define("TITLE","Finder");
 
 // ファイル
 /* 選択デバイスを GET パラメタで持つのが良いか、tmp ファイルに持つのが良いか動作の安定性を鑑み要検討
@@ -76,7 +76,7 @@ if (isset($_GET["selected_device"]) && !is_null($_GET["selected_device"])){
 </div>
 
 <?php if ($_GET["on"] == 1): ?>
-	  <img id="a" src="http://<?= $_SERVER['SERVER_ADDR'] ?>:9000/?action=stream" alt="image"  >
+	  <div style="text-align: center; margin-top: 30px;"><img id="a" src="http://<?= $_SERVER['SERVER_ADDR'] ?>:9000/?action=stream" alt="image"  ></div>
 <?php endif ?>
   
   <div data-role="content" data-theme="c" class="no-cache">
