@@ -21,7 +21,9 @@ define("LOCK_PATH_FN",PATH . LOCK_FN);
 //define("MJPG_STREAMER", 'export LD_PRELOAD=::/usr/lib/uv4l/uv4lext/armv6l/libuv4lext.so; /home/pi/MCC/mjpg/mjpg-streamer/mjpg_streamer -i "/home/pi/MCC/mjpg/mjpg-streamer/input_uvc.so -d /dev/video0 -f 5 -r 160x120 -y" -o "/home/pi/MCC/mjpg/mjpg-streamer/output_http.so -w /tmp -p 9000" >/dev/null 2>&1 &');
 define("MJPG_STREAMER", 'sudo /home/pi/install/mjpg-streamer/mjpg_streamer -i "/home/pi/install/mjpg-streamer/input_uvc.so -d /dev/video0 -f 5 -r 160x120 -y" -o "/home/pi/install/mjpg-streamer/output_http.so -w /tmp -p 9000" >/dev/null 2>&1 &');
 define("MJPG_STREAMER1", 'sudo /home/pi/install/mjpg-streamer/mjpg_streamer -i "/home/pi/install/mjpg-streamer/input_uvc.so -d ');
-define("MJPG_STREAMER2", ' -f 5 -r 160x120 -y" -o "/home/pi/install/mjpg-streamer/output_http.so -w /tmp -p 9000" >/dev/null 2>&1 &');
+//define("MJPG_STREAMER2", ' -f 5 -r 160x120 -y" -o "/home/pi/install/mjpg-streamer/output_http.so -w /tmp -p 9000" >/dev/null 2>&1 &');
+define("MJPG_STREAMER2", ' -f 5 -r ');
+define("MJPG_STREAMER3", ' -y" -o "/home/pi/install/mjpg-streamer/output_http.so -w /tmp -p 9000" >/dev/null 2>&1 &');
 define("KILLMJPG_STREAMER", "sudo pkill -9 -f mjpg >/dev/null 2>&1");
 
 // video デバイスの一覧を取得
@@ -34,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	#sleep(1);
 
 	// 2. start this mgpg
-	$command = MJPG_STREAMER1 . $_POST["selected_device"] .MJPG_STREAMER2;
+	$command = MJPG_STREAMER1 . $_POST["selected_device"] .MJPG_STREAMER2 . $_POST["selected_size"] .MJPG_STREAMER3;
 	$output=shell_exec($command);
 
 	// リロード時の二重送信を防ぐために、自分自身に一度 GET を発行する（と、リロードされても POST がでない）
@@ -86,6 +88,15 @@ if (isset($_GET["selected_device"]) && !is_null($_GET["selected_device"])){
   <div data-role="content" data-theme="c" class="no-cache">
   	<form action="<?= $_SERVER['SCRIPT_NAME'] ?>" method="post" data-ajax="false">
 		<div data-role="fieldcontain">
+			<label for="selected_size">
+				画像サイズを選択してください
+			</label>
+			<select name="selected_size" id="selected_size" data-native-menu="true">
+				<option value="160x120">160x120</option>
+				<option value="320x240">320x240</option>
+				<option value="640x480">640x480</option>
+ 			</select>
+
 			<label for="selected_device">
 
 <?php if(count($video_devices) == 0) :?>
