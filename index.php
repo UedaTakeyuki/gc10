@@ -40,31 +40,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$output=shell_exec($command);
 
 	// リロード時の二重送信を防ぐために、自分自身に一度 GET を発行する（と、リロードされても POST がでない）
-	header("Location: " . $_SERVER['SCRIPT_NAME']."?on=1&selected_device=".$_POST["selected_device"]);
+	header("Location: " . $_SERVER['SCRIPT_NAME']."?on=1&selected_device=".$_POST["selected_device"]."&selected_size=".$_POST["selected_size"]);
 } else {
 	// GET
 }
 
 $selected_device = "";
+$selected_size = "";
 if (isset($_POST["selected_device"]) && !is_null($_POST["selected_device"])){
 	$selected_device = $_POST["selected_device"];
 }
 if (isset($_GET["selected_device"]) && !is_null($_GET["selected_device"])){
 	$selected_device = $_GET["selected_device"];
 }
+if (isset($_POST["selected_size"]) && !is_null($_POST["selected_size"])){
+	$selected_size = $_POST["selected_size"];
+}
+if (isset($_GET["selected_size"]) && !is_null($_GET["selected_size"])){
+	$selected_size = $_GET["selected_size"];
+}
 ?>
+
 
 <?php show_html_head(TITLE) ?>
 
 <SCRIPT language="JavaScript">
 	function selecter_select(){
-			if ("<?= $selected_device ?>" != ""){
+		if ("<?= $selected_device ?>" != ""){
 	    $('#selected_device').val("<?= $selected_device ?>");
 	  }else{
 	    $('#selected_device').val("<?= $video_devices[0] ?>");	  	
 	  }
-      //jquery mobile用の処理
-      $('select').selectmenu('refresh',true);
+		if ("<?= $selected_size ?>" != ""){
+	    $('#selected_size').val("<?= $selected_size ?>");
+	  }
+    //jquery mobile用の処理
+    $('select').selectmenu('refresh',true);
   }
 
 	function setpicurl() {
