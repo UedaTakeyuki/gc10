@@ -90,6 +90,7 @@ if (isset($_GET["selected_size"]) && !is_null($_GET["selected_size"])){
 	  
 <div data-role="header" data-position="fixed">
     <h1><?= TITLE ?></h1>
+    <a href="../reset.php">戻る</a>
 </div>
 
 <?php if ($_GET["on"] == 1): ?>
