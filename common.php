@@ -50,6 +50,7 @@ function us_error_log(){
 	<link rel="stylesheet" href="jquery.mobile-1.3.2.min.css" />
 	<script src="jquery-1.11.3.min.js"></script>
 	<script src="jquery.mobile-1.3.2.min.js"></script>
+	<link href="../fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet">
 </head>
 
 <?php } ?>
