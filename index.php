@@ -3,7 +3,7 @@
 // 共通処理
 //===============================================================
 require_once("common.php");
-require_once("../gc_common/common.php");
+//require_once("../gc_common/common.php");
 require_once("wordsdef.php");
 error_log("us_log:"."script_entry ".__FILE__." updated at ".date( "Y/m/d H:i", getlastmod())); // ファイルヘッダログ
 

@@ -36,6 +36,32 @@ function us_script_entry_log(){
 //---------------------------------------------------------------
 function us_error_log(){
 }
+
+//---------------------------------------------------------------
+// ブラウザ設定言語の設定
+//---------------------------------------------------------------
+// lang code: http://www.futomi.com/lecture/env_var/http_accept_language.html
+function cmn_check_lang(){
+	if (isset($_GET['lang'])){
+    $lang = $_GET['lang'];
+  } elseif (isset($_POST['lang'])){
+    $lang = $_POST['lang'];
+  } else {
+    // ブラウザの言語設定
+    // https://qiita.com/Sankame/items/ceaaf07c7d870e5e5248
+    $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    switch($lang){
+      case "en": // U.K. English
+      case "ja": // Japanese
+//      case "zh": // Chinese
+        break;
+      default:
+        $lang = "en";
+        break;
+    }
+  }
+  return $lang;
+}
 ?>
 
 
@@ -49,6 +75,7 @@ function us_error_log(){
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="jquery.mobile-1.3.2.min.css" />
 	<script src="jquery-1.11.3.min.js"></script>
+  <script src="/SCRIPT/gc_common/resource/custom-scripting.js"></script>
 	<script src="jquery.mobile-1.3.2.min.js"></script>
 	<link href="../fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet">
 </head>
